@@ -4,50 +4,46 @@
 
 Create table Сотрудники *(  
 id int  
-Фамилия varchar (50) not null,  
-Имя varchar (50) not null,  
-Отчество varchar (50) not null,  
+ФИО varchar (150) not null,   
 Оклад numeric,  
 Должность varchar (50) not null,  
-Дата найма date,  
-)*
-
-Create table Организационная структура *(  
-id int  
-Тип подразделения varchar (50) not null,  
-Структурное подразделение varchar (100) not null,  
+Структурное подразделение внешний ключ,  
+Дата найма date,   
 )*  
 
 Create table Филиалы *(  
 id int  
-Регион varchar (150) not null,  
-Город varchar (100) not null,  
-Улица varchar (100) not null,  
-Номер дома numeric,  
+Адрес varchar (200) not null,  
+Структурное подразделение внешний ключ,   
+Проекты внешний ключ,   
 )*  
+
+Create table Структурное подразделение *(  
+id int  
+Тип подразделения varchar (50) not null,  
+Наименование подразделения varchar (100) not null,   
+)*   
 
 Create table Проекты *(  
 id int  
-ФИО сотрудника varchar (150) not null,  
-Проект varchar (100) not null,  
-)*  
-
-Create table Заработная плата *(  
-id int  
-Структурное подразделение varchar (100) not null,  
-Должность varchar (50) not null,  
-Оклад numeric,  
+Проект varchar (100) not null,   
+ФИО внешний ключ,   
 )*  
 
 Create table Должности *(  
 id int  
-Наименование должности varchar (50) not null,  
-Структурное подразделение varchar (100) not null,  
+Структурное подразделение внешний ключ,     
+Наименование должности varchar (50) not null,    
 )*  
 
 Create table Зарплатная ведомость *(  
-ФИО сотрудника varchar (150) not null,  
-Оклад numeric,  
+ФИО внешний ключ int,  
+Оклад numeric,      
+)*  
+
+Create table Премирование *(  
+ФИО внешний ключ,  
+Размер премии numeric,  
 )*  
 
 ---
